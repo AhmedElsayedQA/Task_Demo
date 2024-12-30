@@ -12,9 +12,9 @@ public class RegisterPage extends LoginPage {
     private final By lastNameField = By.id("input-lastname");
     private final By emailField = By.id("input-email");
     private final By passwordField = By.id("input-password");
-    private final By privacyPolicyButton = By.xpath("//input[@type='checkbox']");
+    private final By privacyPolicyButton = By.xpath("(//input[@type='checkbox'])[2]");
     private final By signupButton = By.xpath("//button[@type='submit']");
-    private final By successMsg = By.id("content");
+    private final By successMsg = By.xpath("//*[@id='common-success']//*[@id='content']");
 
     public RegisterPage enterFirstName(String firstName) {
         sendText(firstNameField, firstName);
@@ -25,6 +25,7 @@ public class RegisterPage extends LoginPage {
         sendText(lastNameField, lastName);
         return this;
     }
+
     public RegisterPage enterEmail(String email) {
         sendText(emailField, email);
         return this;
@@ -36,6 +37,7 @@ public class RegisterPage extends LoginPage {
     }
 
     public RegisterPage clickPrivacyPolicyCheck() {
+        scrollByVisibleElement(privacyPolicyButton);
         clickElement(privacyPolicyButton);
         return this;
     }
@@ -45,10 +47,20 @@ public class RegisterPage extends LoginPage {
         return this;
     }
 
-    public String getSuccessMsg() {
-        return getElementText(successMsg);
+    public RegisterPage registerWith(String firstName, String lastName, String email, String password) {
+        enterFirstName(firstName)
+                .enterLastName(lastName)
+                .enterEmail(email)
+                .enterPassword(password)
+                .clickPrivacyPolicyCheck()
+                .clickContinue();
+        return this;
     }
 
+    public String getSuccessMsg() {
+        visibilityWait(successMsg);
+        return getElementText(successMsg);
+    }
 
 
 }
