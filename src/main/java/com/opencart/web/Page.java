@@ -1,4 +1,4 @@
-package org.example;
+package com.opencart.web;
 
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
@@ -19,27 +19,27 @@ public class Page {
 
     public void visibilityWait(By locator) {
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        highlightAndScreenshotElement(element);
+        highlightAndScreenshotElement(locator);
     }
     @Step("-Click Element ")
 
     public void clickElement(By locator){
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         element.click();
-        highlightAndScreenshotElement(element);
+        highlightAndScreenshotElement(locator);
     }
     @Step("-Send Text")
     public void sendText(By locator, String text){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         element.clear();
         element.sendKeys(text);
-        highlightAndScreenshotElement(element);
+        highlightAndScreenshotElement(locator);
     }
     @Step("-get element Text")
 
     public String getElementText(By locator){
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-        highlightAndScreenshotElement(element);
+        highlightAndScreenshotElement(locator);
         return element.getText();
     }
     @Step("-scroll By Visible Element")
@@ -53,7 +53,7 @@ public class Page {
         }catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        highlightAndScreenshotElement(element);
+        highlightAndScreenshotElement(locator);
     }
 
     @Attachment(value = "Page screenshot", type = "image/png")
@@ -61,10 +61,10 @@ public class Page {
         return ((TakesScreenshot) this.driver).getScreenshotAs(OutputType.BYTES);
     }
 
-    public void highlightAndScreenshotElement(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='7px groove green'", element);
+    public void highlightAndScreenshotElement(By locator) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='7px groove green'", driver.findElement(locator));
         saveScreenshotPNG();
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border=''", element);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border=''", driver.findElement(locator));
     }
 
 }

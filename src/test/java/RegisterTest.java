@@ -1,8 +1,6 @@
-import org.example.HeaderPage;
-import org.example.RegisterPage;
+import com.opencart.web.RegisterPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.util.Random;
 

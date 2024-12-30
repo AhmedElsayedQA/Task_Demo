@@ -1,9 +1,7 @@
-package org.example;
+package com.opencart.web;
 
-import org.checkerframework.checker.units.qual.N;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HeaderPage extends Page {
 

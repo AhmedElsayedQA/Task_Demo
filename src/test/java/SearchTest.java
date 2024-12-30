@@ -1,5 +1,5 @@
-import org.example.HeaderPage;
-import org.example.SearchPage;
+import com.opencart.web.HeaderPage;
+import com.opencart.web.SearchPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

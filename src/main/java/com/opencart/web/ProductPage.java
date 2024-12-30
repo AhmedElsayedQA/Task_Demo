@@ -1,7 +1,6 @@
-package org.example;
+package com.opencart.web;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -60,7 +59,7 @@ public class ProductPage extends Page {
         return this;
     }
 
-    public ProductPage uploadFile(String filePath) throws InterruptedException {
+    public ProductPage uploadFile(String filePath){
         scrollByVisibleElement(uploadFileBtn);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         //the element is hidden,so we set it to be visible as it throws element is not intractable exception
@@ -69,7 +68,7 @@ public class ProductPage extends Page {
         return this;
     }
 
-    public ProductPage addProductToCart(String text, String textArea, String filePath) throws InterruptedException {
+    public ProductPage addProductToCart(String text, String textArea, String filePath) {
         return clickMediumSizeRadioBtn()
                 .clickCheckbox3()
                 .enterText(text)
@@ -83,7 +82,7 @@ public class ProductPage extends Page {
     public String getSuccessMsg() {
         String msg = getElementText(successSnackBar);
         //closing the snack bar
-        clickElement(By.className("btn-close"));
+//        clickElement(By.className("btn-close"));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(successSnackBar));
         return msg;
     }

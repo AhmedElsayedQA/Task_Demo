@@ -1,4 +1,4 @@
-package org.example;
+package com.opencart.web;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -137,7 +137,7 @@ public class CheckoutPage extends Page {
     public String getAddressSuccessMsg() {
         String msg=getElementText(changAddressSuccessMsg);
         //closing the snack bar
-        clickElement(By.className("btn-close"));
+//        clickElement(By.className("btn-close"));
         wait.until(ExpectedConditions.invisibilityOfElementLocated(changAddressSuccessMsg));
         return msg;
     }

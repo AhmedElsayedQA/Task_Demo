@@ -1,6 +1,5 @@
-import groovy.util.logging.Log;
-import org.example.LoginPage;
-import org.example.MyAccountPage;
+import com.opencart.web.LoginPage;
+import com.opencart.web.MyAccountPage;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
